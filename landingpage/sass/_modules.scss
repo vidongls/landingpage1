@@ -1,0 +1,347 @@
+body {
+  font-family: $font;
+  color: $neu-08;
+  overflow-x: hidden;
+}
+.mainNav {
+  @include paddingSide;
+  @include transition;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 3;
+
+  @include sm {
+    height: 64px;
+  }
+
+  &:before {
+    @include transition;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    box-shadow: $shadow;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  &__logo {
+    @include transition;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100px;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+
+    @include sm {
+      width: 72px;
+    }
+  }
+
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    @include sm {
+      @include transition;
+      height: 100vh;
+      right: 0;
+      top: 0;
+      position: fixed;
+      width: 100%;
+      padding: 0 10%;
+      justify-content: center;
+      display: flex;
+      visibility: hidden;
+
+      &:before,
+      &:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        background-color: rgba($neu-09, 0.5);
+        opacity: 1;
+        transition: all 0.4s 0.2s ease;
+      }
+      &:after {
+        transition: all 0.4s ease;
+        background-color: $neu-08;
+      }
+    }
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    display: none;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @include sm {
+      display: flex;
+    }
+
+    span {
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      position: relative; //neu ko co after before bi loi
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
+
+      &:before,
+      &:after {
+        content: "";
+        width: 32px;
+        height: 100%;
+        position: absolute;
+        background-color: inherit;
+        transition: inherit;
+      }
+
+      &:before {
+        transform: translateY(-8px);
+      }
+      &:after {
+        transform: translateY(8px);
+      }
+    }
+  }
+  &__links {
+    @include transition;
+    z-index: 1;
+    color: white;
+
+    @include sm {
+      display: none;
+    }
+  }
+
+  &__linkItem {
+    @include ctaStyle;
+    font-weight: 700;
+    margin-right: 64px;
+    position: relative;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    &:before {
+      content: "";
+      width: calc(100% + 12px); //!!!!
+      height: 2px;
+      left: -6px;
+      bottom: -10px;
+      position: absolute;
+      background-color: $neu-04;
+      opacity: 0;
+      z-index: -1;
+      border-radius: $radius;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      &:before {
+        bottom: -2px;
+        opacity: 0.5;
+        height: calc(100% + 4px);
+      }
+    }
+
+    &.active {
+      &:before {
+        bottom: -2px;
+        opacity: 0.5;
+        height: calc(100% + 4px);
+      }
+    }
+    @include sm {
+      @include transition;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      font-size: 24px;
+      font-weight: 600;
+      opacity: 0;
+      color: white;
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  &.navSticky {
+    height: 72px;
+
+    @include sm {
+      height: 64px;
+    }
+    &:before {
+      opacity: 1;
+      top: 0;
+    }
+    .mainNav {
+      &__logo {
+        width: 80px;
+
+        @include sm {
+          width: 72px;
+        }
+      }
+
+      &__links {
+        color: $neu-08;
+      }
+
+      &__icon {
+        span {
+          background-color: $neu-08;
+        }
+      }
+    }
+  }
+
+  &.navDark {
+    .mainNav {
+      &__links {
+        color: $neu-08;
+      }
+
+      &__icon {
+        span {
+          background-color: $neu-08;
+        }
+      }
+    }
+  }
+
+  &.navOpen {
+    .mainNav {
+      &__icon {
+        span {
+          background-color: $neu-01;
+          width: 0;
+          transform: rotate(90deg);
+
+          &:before {
+            transform: rotate(45deg);
+          }
+
+          &:after {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+
+      &__wrapper {
+        visibility: visible;
+
+        &:before,
+        &:after {
+          transition: all 0.6s 0.2s ease;
+          transform: translateX(0%);
+        }
+
+        &:after {
+          transition-delay: 0.3s;
+        }
+      }
+      &__links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      &__linkItem {
+        @include transition;
+        @include animationEnter;
+        @include delayEnter;
+        animation-delay: 0.2s;
+        opacity: 1;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.sliderHeading {
+  height: 100vh;
+  @include sm {
+    height: 560px;
+  }
+  .swiper-container {
+    height: calc(100%-100px);
+    margin-top: 100px;
+    @include sm {
+      height: calc(100% - 64px);
+      margin-top: 64px;
+    }
+  }
+  &__wrapper {
+    @include paddingSide;
+    padding-right: 0;
+    display: flex;
+    height: 100%;
+    position: relative;
+    @include sm {
+      padding: 0;
+      flex-direction: column-reverse;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 50vw;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: $neu-03;
+      z-index: -1;
+      @include xs {
+        width: calc(100%-80px);
+      }
+    }
+  }
+  &__image {
+    // height: 100%;
+  }
+  &__text {
+    width: 50%;
+    min-width: 300px;
+    position: relative;
+    padding: 48px 48px 48px 0px;
+    padding-top: calc(48px + 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+  @include sm{
+    width: calc(100% - 80px);
+    padding: 24px 5vw;
+
+  }
+  @include xs{
+    padding: 24px;
+  }
+  }
+}

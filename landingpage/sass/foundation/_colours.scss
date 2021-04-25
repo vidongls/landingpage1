@@ -1,0 +1,205 @@
+// Main Colours
+$m-01: #C88256;
+$m-01--light-01: #E8C0A8;
+$m-01--light-02: #F5D7C5;
+$m-01--light-03: #FFEEE4;
+
+// Neutral Colours
+$neu-01: #ffffff;
+$neu-02: #f5f5f6;
+$neu-03: #ecedee;
+$neu-04: #e0e0e2;
+$neu-05: #cecfd2;
+$neu-06: #b4b4ba;
+$neu-07: #7f8088;
+$neu-08: #5c5c66;
+$neu-09: #363842;
+
+
+$g-01: linear-gradient(108.09deg, #C88256 0.88%, #F5D7C5 100.05%);
+$g-02: linear-gradient(288.09deg, #C88256 0.01%, #E8C0A8 100.01%);
+$g-03: linear-gradient(171.56deg, #FAF3EF 6.27%, #F3DFCA 91.19%);
+
+// Styles Variables
+
+$shadow: 0px 8px 24px -4px rgba(204, 140, 99, 0.28);
+$shadowHover: 0px 2px 10px -2px rgba(204, 140, 99, 0.28);
+$radius: 8px;
+
+@mixin cta01 {
+    background: $g-01;
+    color: $neu-01;
+    box-shadow: $shadow;
+
+    &:before {
+        background: $m-01;
+    }
+}
+
+@mixin cta01alt {
+    background: $neu-01;
+    color: $m-01;
+    box-shadow: 0px 8px 20px rgba(204, 140, 99, 0.28);
+
+    &:before {
+        background: $neu-03;
+    }
+}
+
+@mixin cta02 {
+    border: solid 1px $neu-08;
+    color: $neu-08;
+}
+
+@mixin cta02alt {
+    border: solid 1px white;
+    color: white;
+}
+
+.neu-01 {
+    background-color: $neu-01;
+    color: $neu-08;
+
+    .cta01 {
+        @include cta01;
+    }
+
+    .cta02 {
+        @include cta02;
+    }
+}
+
+.neu-02 {
+    background-color: $neu-02;
+    color: $neu-08;
+
+    .cta01 {
+        @include cta01;
+    }
+
+    .cta02 {
+        @include cta02;
+    }
+}
+
+.neu-03 {
+    background-color: $neu-03;
+    color: $neu-08;
+
+    .cta01 {
+        @include cta01;
+    }
+
+    .cta02 {
+        @include cta02;
+    }
+}
+
+.neu-04 {
+    background-color: $neu-04;
+    color: $neu-08;
+
+    .cta01 {
+        @include cta01;
+    }
+
+    .cta02 {
+        @include cta02;
+    }
+}
+
+.neu-05 {
+    background-color: $neu-05;
+    color: $neu-08;
+
+    .cta01 {
+        @include cta01;
+    }
+
+    .cta02 {
+        @include cta02;
+    }
+}
+
+.neu-06 {
+    background-color: $neu-06;
+    color: white;
+
+    .cta01 {
+        @include cta01alt;
+    }
+
+    .cta02 {
+        @include cta02alt;
+    }
+}
+
+.neu-07 {
+    background-color: $neu-07;
+    color: white;
+
+
+    .cta {
+        &.cta01 {
+            @include cta01alt;
+        }
+
+        &.cta02 {
+            @include cta02alt;
+        }
+    }
+}
+
+.neu-08 {
+    background-color: $neu-08;
+    color: white;
+
+    .cta {
+        &.cta01 {
+            @include cta01alt;
+        }
+
+        &.cta02 {
+            @include cta02alt;
+        }
+    }
+}
+
+.neu-09 {
+    background-color: $neu-09;
+    color: white;
+
+    .cta01 {
+        @include cta01alt;
+    }
+
+    .cta02 {
+        @include cta02alt;
+    }
+}
+
+.g-02 {
+    background: $g-02;
+    color: $neu-01;
+
+    .cta01 {
+        @include cta01alt;
+    }
+
+    .cta02 {
+        @include cta02alt;
+    }
+}
+
+.g-03 {
+    background: $g-03;
+    color: $neu-08;
+
+    .cta01 {
+        @include cta01alt;
+    }
+
+    .cta02 {
+        @include cta02alt;
+    }
+}
